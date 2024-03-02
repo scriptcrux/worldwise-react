@@ -8,6 +8,8 @@ import AppLayout from './pages/AppLayout';
 import CitiesList from './components/CitiesList';
 import { useEffect, useState } from 'react';
 import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
+import CountryList from './components/CountryList';
+import City from './components/City';
 
 polyfillCountryFlagEmojis();
 const BASE_URL = 'http://localhost:8000';
@@ -44,8 +46,8 @@ function App() {
 
           {/* {console.log('APP>>cities', cities, isLoading)} */}
           <Route path="cities" element={<CitiesList cities={cities} isLoading={isLoading} />} />
-
-          <Route path="countries" element={<p>Countries</p>} />
+          <Route path="cities/:id" element={<City />} />
+          <Route path="countries" element={<CountryList cities={cities} isLoading={isLoading} />} />
           <Route path="form" element={<p>Form</p>} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
